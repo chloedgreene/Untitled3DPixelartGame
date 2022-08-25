@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+params_diffuse_mode = 4
+params_specular_mode = 3
+albedo_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+metallic = 0.18
+metallic_specular = 0.0
+roughness = 0.0
+ao_enabled = true
+ao_light_affect = 0.14
+ao_on_uv2 = false
+ao_texture_channel = 0
+refraction_enabled = true
+refraction_scale = 0.05
+refraction_texture_channel = 0
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.12748, 3.19377, 1.15319 )
+
+[node name="CSGCombiner" type="CSGCombiner"]
+material_overlay = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 2.268, 0, 0, 0, 0.5, 0, 2.52887, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48112, 0 )
+shape = SubResource( 2 )
