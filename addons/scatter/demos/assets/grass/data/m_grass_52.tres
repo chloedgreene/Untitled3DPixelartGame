@@ -5,7 +5,7 @@
 [ext_resource path="res://addons/scatter/demos/assets/grass/data/t_noise.png" type="Texture" id=3]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.241135, 0.833008, 0, 1, 0.594666, 0.93457, 0.032856, 1 )
+colors = PoolColorArray( 0.241135, 0.833008, 0, 1, 0.478431, 0.745098, 0.121569, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -14,7 +14,7 @@ gradient = SubResource( 1 )
 shader = ExtResource( 2 )
 shader_param/alpha_scissor_threshold = 0.8
 shader_param/transmission = Color( 0.95, 0.95, 0.95, 1 )
-shader_param/secondary_color = Color( 0.305882, 0.831373, 0.0941176, 1 )
+shader_param/secondary_color = Color( 0.478431, 0.745098, 0.121569, 1 )
 shader_param/secondary_attenuation = 0.1
 shader_param/grass_height = 0.3
 shader_param/wind_direction = Vector2( 1, -0.5 )

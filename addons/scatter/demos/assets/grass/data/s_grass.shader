@@ -28,7 +28,7 @@ void vertex() {
 	vec2 uv = world_pos.xz / (noise_scale + 1e-2);
 	vec2 panning_uv = uv + fract(TIME * wind_direction * wind_speed);
 	float wind = texture(texture_noise, panning_uv).r * 2.0 - 0.4;
-	color = texture(texture_noise, uv).r;
+	color = texture(texture_noise, uv).b;
 	
 	vec2 wind_offset = -wind_direction * wind_strength * influence * wind;
 	world_pos.xz += wind_offset;

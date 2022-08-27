@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/stylized_fire.shader" type="Shader" id=1]
+[ext_resource path="res://assets/FireMask.png" type="Texture" id=2]
+[ext_resource path="res://assets/HoleNoise.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/emission_intensity = 2.0
+shader_param/time_scale = 3.0
+shader_param/texture_scale = Vector2( 1, 1 )
+shader_param/edge_softness = 0.1
+shader_param/noise_texture = ExtResource( 3 )
+shader_param/texture_mask = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.258537, 0.614634, 0.804878 )
+colors = PoolColorArray( 0, 0.99707, 1, 1, 0.980957, 0.801817, 0, 1, 0.843035, 0.165144, 0.862793, 0.421521, 1, 0, 0.447059, 0.403922 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 64
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 3.65289, 0, 0, Vector2( 0.556561, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+width = 128
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 1.0
+trail_divisor = 3
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, -1, 0 )
+initial_velocity = 1.0
+linear_accel = 4.0
+scale = 0.77
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 0.5, 0.5 )
+
+[node name="Fire" type="Particles"]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 35.2345, -0.378113, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+amount = 120
+lifetime = 0.75
+visibility_aabb = AABB( -1.08173, -4, -1.05158, 2.16347, 8, 2.10317 )
+local_coords = false
+draw_order = 1
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_color = Color( 1, 0.807843, 0.560784, 1 )
+light_energy = 0.5
+light_specular = 0.818
+light_bake_mode = 0
+shadow_enabled = true
+shadow_color = Color( 0.196078, 0, 0.141176, 1 )

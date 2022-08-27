@@ -5,6 +5,7 @@ export var speed = 4
 export var rot_speed = 0.85
 
 var velocity = Vector3.ZERO
+onready var pivot = get_node("Pivot")
 
 func _physics_process(delta):
 
@@ -21,6 +22,8 @@ func get_input(delta):
 		velocity += transform.basis.z * speed
 	if Input.is_action_pressed("d"):
 		rotate_y(-rot_speed * delta)
+		
 	if Input.is_action_pressed("a"):
 		rotate_y(rot_speed * delta)
+		
 	velocity.y = vy

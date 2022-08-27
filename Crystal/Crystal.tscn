@@ -35,6 +35,9 @@ refraction_texture_channel = 0
 
 [sub_resource type="CubeMesh" id=3]
 size = Vector3( 0.2, 0.2, 0.2 )
+subdivide_width = 5
+subdivide_height = 5
+subdivide_depth = 5
 
 [sub_resource type="CubeMesh" id=4]
 size = Vector3( 0.01, 0.01, 0.01 )
@@ -60,7 +63,7 @@ script = ExtResource( 2 )
 [node name="CPUParticles" type="CPUParticles" parent="CSGCombiner/MeshInstance"]
 transform = Transform( 0.973127, 0, 0, 0, 0.973127, 0, 0, 0, 0.973127, 0, 0, 0 )
 amount = 1024
-lifetime = 10.0
+lifetime = 2.0
 local_coords = false
 mesh = SubResource( 4 )
 emission_shape = 2
@@ -79,6 +82,8 @@ hue_variation_curve = SubResource( 5 )
 light_color = Color( 0.85098, 0, 1, 1 )
 light_energy = 0.57
 light_indirect_energy = 0.19
+light_specular = 0.0
+shadow_enabled = true
 
 [node name="CSGCombiner2" type="CSGCombiner" parent="."]
 material_override = ExtResource( 1 )
